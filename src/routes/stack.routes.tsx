@@ -7,11 +7,11 @@ import { Home } from "../screens/home";
 
 const StackRoutes = () => {
     return (
-        <Navigator>
+        <Navigator initialRouteName="SignIn">
             <Screen
                 name="signIn"
                 component={SignIn}
-                options={{ title: 'Entrar',  
+                options={{ title: 'Entrar',
                     headerStyle: {
                         backgroundColor: 'green',
                     },
@@ -24,7 +24,7 @@ const StackRoutes = () => {
             <Screen
                 name="Home"
                 component={Home}
-                options={{ title: 'Entrar',  
+                options={{ title: 'Home',  
                 headerStyle: {
                     backgroundColor: 'green',
                 },
