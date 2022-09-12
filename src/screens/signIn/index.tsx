@@ -1,7 +1,22 @@
 import React from 'react';
 import { Box, Text, Input, Stack, Button } from 'native-base'
+import { Alert } from 'react-native';
+import { useState } from 'react';
+import { Props } from '../../types/routes';
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
+
+    const [username, setUsername] = useState<any>();
+    const [password, setPassowrd] = useState<any>();
+
+    const handleSubmit = () => {
+        if(username === "elisiomualumene" && password === "mualumene20"){
+            navigation.navigate("Home")
+        } else{
+            Alert.alert("Nome ou Senha Invalidas!")
+        }
+    }
+
     return(
         <Box 
             justifyContent="center" 
@@ -36,11 +51,12 @@ const SignIn = () => {
                 }} 
                 size={5}
                 color="muted.400" 
-                placeholder="Name"
+                placeholder="Username"
                 fontSize={'18px'}
                 bgColor={'gray.900'}
                 borderColor={'green.900'}
                 _focus={{borderColor: 'green.900'}}
+                onChangeText={(text: any) => setUsername(text)}
                 />
                 <Input w={{
                 base: "80%",
@@ -50,16 +66,18 @@ const SignIn = () => {
                 color="muted.400" 
                 placeholder="Password" 
                 fontSize={'18px'}
+                type="password"
                 bgColor={'gray.900'}
                 borderColor={'green.900'}
                 _focus={{borderColor: 'green.900'}}
+                onChangeText={(text: any) => setPassowrd(text)}
                 />
                 <Button 
                     colorScheme={'green'} 
                     w="80%"
                     size={'lg'}
                     marginTop={8}
-                    >
+                    onPress={handleSubmit}>
                     Entrar
                 </Button>
             </Stack>;
