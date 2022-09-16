@@ -1,22 +1,22 @@
 import React from 'react';
 import { Box, Text, Input, Stack, Button } from 'native-base'
 import { Alert } from 'react-native';
-import { useState } from 'react';
-import { Props } from '../../types/routes';
+import { useState } from "react"
+
+
 
 const SignIn = ({navigation}) => {
 
     const [username, setUsername] = useState<any>();
     const [password, setPassowrd] = useState<any>();
 
-    const handleSubmit = () => {
+    const handleSubmit = async() => {
         if(username === "elisiomualumene" && password === "mualumene20"){
             navigation.navigate("Home")
         } else{
             Alert.alert("Nome ou Senha Invalidas!")
         }
     }
-
     return(
         <Box 
             justifyContent="center" 
