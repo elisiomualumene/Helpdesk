@@ -15,8 +15,11 @@ const SignIn = ({navigation}) => {
             navigation.navigate("Home")
         } else{
             Alert.alert("Nome ou Senha Invalidas!")
+            username("")
+            password("")
         }
     }
+    
     return(
         <Box 
             justifyContent="center" 

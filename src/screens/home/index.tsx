@@ -1,9 +1,22 @@
 import { Text, Box, Flex, Button, ScrollView } from 'native-base';
 import { useState } from 'react';
-import { data } from '../../mock/db';
+import { data, data2 } from '../../mock/db';
 const Home = ({navigation}) => {
 
     const [tabs, setTabs] = useState<boolean>(true)
+
+    const [info3, setInfo] = useState<boolean>(true)
+    
+    const info = {
+        id: 1,
+        machine: "09779",
+        description: "não liga!",
+        createdAt: new Date()
+    }
+
+    function handleChange(){
+        data2.push(info)
+    }
 
     return (
         <Box bg="#121214" h="100%">
@@ -71,7 +84,7 @@ const Home = ({navigation}) => {
             </Flex>
             <ScrollView w="100%" showsVerticalScrollIndicator={false}>
                 {
-                    tabs ? data.map((data: any) => (
+                    tabs ? data.map((data: any) => ( //for
                         <Box 
                             key={data.id} 
                             bg="#202024"
@@ -91,9 +104,10 @@ const Home = ({navigation}) => {
                                         {data.id}
                                 </Box>
                                 <Box>
-                                    <Text color="white" m="1rem" fontSize="18px">
+                                    <Text color="white" m="1rem" fontSize="18px" onPress={handleChange}>
                                         Patrimonio{" "}{data.machine}
                                     </Text>
+                                    
                                     <Text color="#C4C4CC" ml="1.5rem" fontSize="12px">
                                         {" "}{data.createAt}
                                     </Text>
@@ -101,8 +115,55 @@ const Home = ({navigation}) => {
                             </Flex>
                         </Box>
                     ))
-                : <Text color="#7C7C8A" textAlign="center" m={100} fontSize="20px">Voce não tem chamadas Finalizadas</Text>}
+                : 
+                info3 ? (
+                data2.map((data: any) => ( //for
+                        <Box 
+                            key={data.id} 
+                            bg="#202024"
+                            h={95}
+                            borderRadius={5}
+                            marginLeft={"auto"}
+                            marginRight={"auto"}
+                            w="90%"
+                            marginTop={4}
+                            >
+                            <Flex flexDirection="row" h="100%">
+                                <Box 
+                                    bg="green.600" 
+                                    h="100%" 
+                                    borderLeftRadius={5}
+                                    >
+                                        {data.id}
+                                </Box>
+                                <Box>
+                                    <Text color="white" m="1rem" fontSize="18px" >
+                                        Patrimonio{" "}{data.machine}
+                                    </Text>
+                                    
+                                    <Text color="#C4C4CC" ml="1.5rem" fontSize="12px">
+                                        {" "}{data.createAt}
+                                    </Text>
+                                </Box>
+                            </Flex>
+                        </Box>
+                    )    ))
+                
+                }
+                    
             </ScrollView>
+
+            <Button 
+                colorScheme="red" 
+                w="91%" 
+                mb="10px" 
+                m="auto" 
+                size="lg"
+                onPress={() => setTabs()}
+                >
+                    Limpar
+                </Button>
+
             <Button colorScheme="green" w="91%" m="auto" size="lg" onPress={() => navigation.navigate("Solicitation")}>Nova Solicitação</Button>
         </Box>
     )

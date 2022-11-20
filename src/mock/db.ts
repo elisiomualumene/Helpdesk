@@ -42,3 +42,24 @@ export const data = [
         createAt: "1/09/2022"
     },
 ]
+
+
+
+
+export const data2 = [];
+
+
+// int vetor[5] = {1,2,3,4,5}
+
+/**
+ * for (int i = 0; i < data.lenght; i++){
+ *  escreva(vetor[i], "Patrimonio")
+ * }
+ * 
+ * 
+ * i patrimonio
+ * 2 patrimonio
+ * 3 patrimonio
+ * 4 patrimonio
+ * 5 patrimonio
+ */
